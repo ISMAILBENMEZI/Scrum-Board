@@ -80,6 +80,7 @@ function updateAssigneeSelect() {
  */
 function addUserStory() {
     // À IMPLÉMENTER
+
 }
 
 /**
@@ -109,6 +110,18 @@ function renderSprintBacklog() {
  */
 function startSprint(sprintNum) {
     // À IMPLÉMENTER
+    const startTodo =document.getElementById("todo");
+    userStories[sprintNum].forEach(backlog=>{
+        const backlogSpan =document.createElement("span");
+        backlogSpan.innerHTML=backlog;
+        startTodo.appendChild(backlogSpan);
+    })
+        
+   
+
+    renderSprintBacklog() ;
+    renderBoard();
+
 }
 
 /**
