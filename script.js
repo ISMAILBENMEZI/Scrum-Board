@@ -89,7 +89,47 @@ function updateAssigneeSelect() {
  * - Appeler renderSprintBacklog() pour actualiser l'affichage
  */
 function addUserStory() {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
+  const Is_storyTitle = document.getElementById("storyTitle");
+  const Is_storyDescription = document.getElementById("storyDescription");
+  const Is_storySprint = document.querySelector("#storySprint");
+  const Is_storyAssignee = document.querySelector("#storyAssignee");
+
+  let selectedSprint;
+  Array.from(Is_storySprint.children).forEach((option) => {
+    if (option.selected === true) {
+      selectedSprint = option.value;
+      //   console.log(option.value);
+    }
+  });
+
+  let selectedAssignee;
+  for (var i = 0; i < Is_storyAssignee.options.length; i++) {
+    if (Is_storyAssignee.options[i].selected === true) {
+      selectedAssignee = Is_storyAssignee.options[i].value;
+    }
+  }
+
+  if (Is_storyTitle.value === "" || Is_storyDescription.value === "") 
+  {
+    return;
+  }
+    
+
+  let userStory = {
+    id: storyIdCounter,
+    title: Is_storyTitle.value,
+    sprint: selectedSprint,
+    assignee: selectedAssignee,
+    description: Is_storyDescription.value,
+  };
+
+  userStories.push(userStory);
+  console.log(userStories);
+  storyIdCounter++;
+
+  //   console.log(AjouterUserStory);
+  renderSprintBacklog();
 }
 
 /**
