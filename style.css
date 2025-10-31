@@ -304,3 +304,11 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+.info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #28a745;
+  padding: 10px;
+}
