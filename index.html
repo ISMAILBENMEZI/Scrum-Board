@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouCode SCRUM Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -33,9 +35,9 @@
                 </div>
                 <div class="input-group">
                     <select id="storySprint">
-                        <option value="1">Sprint 1</option>
-                        <option value="2">Sprint 2</option>
-                        <option value="3">Sprint 3</option>
+                        <option value="sprint1">Sprint 1</option>
+                        <option value="sprint2">Sprint 2</option>
+                        <option value="sprint3">Sprint 3</option>
                     </select>
                     <select id="storyAssignee">
                         <option value="">Non assigné</option>
@@ -47,8 +49,76 @@
 
         <div class="sprint-backlog">
             <h2>📋 Sprint Backlog</h2>
-            <div id="sprintBacklog"></div>
+            <div id="sprintBacklog">
+                <div class="sprint-container">
+                    <div class="sprint-header">
+                        <h3>Sprint 1</h3>
+                        <button class="start-sprint-btn" onclick="startSprint(1)">
+                            ▶ Démarrer Sprint
+                        </button>
+                    </div>
+                    <div class="sprint-stories" id="sprint1">
+                    
+                    </div>
+                </div>
+
+                <div class="sprint-container">
+                    <div class="sprint-header">
+                        <h3>Sprint 2</h3>
+                        <button class="start-sprint-btn" onclick="startSprint(2)">
+                            ▶ Démarrer Sprint
+                        </button>
+                    </div>
+                    <div class="sprint-stories" id="sprint2">
+                        
+                    </div>
+                </div>
+                <div class="sprint-container">
+                    <div class="sprint-header">
+                        <h3>Sprint 3</h3>
+                        <button class="start-sprint-btn" onclick="startSprint(3)">
+                            ▶ Démarrer Sprint
+                        </button>
+                    </div>
+                    <div class="sprint-stories" id="sprint3">
+                        
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- <div class="sprint-backlog">
+            <h2>📋 Sprint Backlog</h2>
+            <div id="sprintBacklog">
+                <div>
+                    <div class="info">
+                        <h3>sprint1</h3>
+                        <button class="btn">start sprint</button>
+                    </div>
+                    <div class="list" id="sprint1">
+                        <h5>aucune user story</h5>
+                    </div>
+                </div>
+                <div>
+                    <div class="info">
+                        <h3>sprint2</h3>
+                        <button class="btn">start sprint</button>
+                    </div>
+                    <div class="list" id="sprint2">
+                        <h5>aucune user story</h5>
+                    </div>
+                </div>
+                <div>
+                    <div class="info">
+                        <h3>sprint3</h3>
+                        <button class="btn">start sprint</button>
+                    </div>
+                    <div class="list" id="sprint3">
+                        <h5>aucune user story</h5>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
         <div class="scrum-board">
             <h2>📊 SCRUM Board</h2>
@@ -75,4 +145,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
