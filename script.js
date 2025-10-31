@@ -1,7 +1,32 @@
 let collaborators = [];
-let userStories = [];
+let userStories = [
+    {
+        id: 1,
+        title: "this is a injectecd user story",
+        description:"fghrthrth",
+        sprint: "sprint1",
+        assignment: "brahim"
+    },
+    {
+        id: 2,
+        title: "tsdgergtrger fgergre d user story",
+        description:"fghrthrth",
+        sprint: "sprint1",
+        assignment: "ahmed"
+    }
+];
 let boardStories = [];
 let storyIdCounter = 1;
+
+function usBlock(title, description, assign) {
+    return `
+          <div class="story-item">
+                <strong>`+ title + `</strong>
+                <p>`+ description + `</p>
+                <small>Assigné à: `+ assign + `</small>
+          </div>
+       `;
+}
 
 /**
  * Fonction pour ajouter un nouveau collaborateur à l'équipe
@@ -206,6 +231,7 @@ function deleteCard(id) {
   // À IMPLÉMENTER
 }
 
+
 // Initialisation
-renderSprintBacklog();
-renderBoard();
+// renderSprintBacklog();
+// renderBoard();
