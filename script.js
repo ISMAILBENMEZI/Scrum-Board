@@ -5,7 +5,7 @@ let storyIdCounter = 1;
 
 /**
  * Fonction pour ajouter un nouveau collaborateur à l'équipe
- * TODO: 
+ * TODO:
  * - Récupérer la valeur du champ input avec l'id 'collaboratorName'
  * - Vérifier que le nom n'est pas vide et n'existe pas déjà dans le tableau 'collaborators'
  * - Ajouter le collaborateur au tableau 'collaborators'
@@ -14,14 +14,17 @@ let storyIdCounter = 1;
  * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
  */
 function addCollaborator() {
-    let br_inputColab=document.getElementById("collaboratorName");
-    if(!br_inputColab.value.trim() || collaborators.includes(br_inputColab.value.trim())){
-        return;
-    }
-    collaborators.push(br_inputColab.value.trim())
-    console.log(collaborators)
-    updateCollaboratorsList()
-    updateAssigneeSelect()
+  let br_inputColab = document.getElementById("collaboratorName");
+  if (
+    !br_inputColab.value.trim() ||
+    collaborators.includes(br_inputColab.value.trim())
+  ) {
+    return;
+  }
+  collaborators.push(br_inputColab.value.trim());
+  console.log(collaborators);
+  updateCollaboratorsList();
+  updateAssigneeSelect();
 }
 
 /**
@@ -33,19 +36,18 @@ function addCollaborator() {
  * - Injecter le HTML dans l'élément avec innerHTML
  */
 function updateCollaboratorsList() {
-    const Is_List = document.getElementById ("collaboratorsList");
-    Is_List.innerHTML = "";
-    for(let i of collaborators)
-    {
-        let span = document.createElement("span");
-        span.textContent = i;
-        span.style.backgroundColor = "#667eea"
-        span.style.color = "#ffffffff"
-        span.style.padding = "8px 15px"
-        span.style.borderRadius= "20px"
-        span.style.margin = "0 5px"
-        Is_List.appendChild(span);
-    }
+  const Is_List = document.getElementById("collaboratorsList");
+  Is_List.innerHTML = "";
+  for (let i of collaborators) {
+    let span = document.createElement("span");
+    span.textContent = i;
+    span.style.backgroundColor = "#667eea";
+    span.style.color = "#ffffffff";
+    span.style.padding = "8px 15px";
+    span.style.borderRadius = "20px";
+    span.style.margin = "0 5px";
+    Is_List.appendChild(span);
+  }
 }
 
 /**
@@ -56,16 +58,16 @@ function updateCollaboratorsList() {
  * - Mettre à jour le select avec innerHTML
  */
 function updateAssigneeSelect() {
-    // À IMPLÉMENTER
-    const mlSelect =document.getElementById("storyAssignee");
-    mlSelect.innerHTML="";
-    collaborators.forEach(select=>{
-     mlSelect.forEach
-     const option=document.createElement("option");
-     option.innerHTML=select;
-     option.value=select;
-     mlSelect.appendChild(option);
-    });
+  // À IMPLÉMENTER
+  const mlSelect = document.getElementById("storyAssignee");
+  mlSelect.innerHTML = "";
+  collaborators.forEach((select) => {
+    mlSelect.forEach;
+    const option = document.createElement("option");
+    option.innerHTML = select;
+    option.value = select;
+    mlSelect.appendChild(option);
+  });
 }
 
 /**
@@ -79,7 +81,43 @@ function updateAssigneeSelect() {
  * - Appeler renderSprintBacklog() pour actualiser l'affichage
  */
 function addUserStory() {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
+  const Is_storyTitle = document.getElementById("storyTitle");
+  const Is_storyDescription = document.getElementById("storyDescription");
+  const Is_storySprint = document.querySelector("#storySprint");
+  const Is_storyAssignee = document.querySelector("#storyAssignee");
+
+  let selectedSprint;
+  Array.from(Is_storySprint.children).forEach((option) => {
+    if (option.selected === true) {
+      selectedSprint = option.value;
+      //   console.log(option.value);
+    }
+  });
+
+  let selectedAssignee;
+  for (var i = 0; i < Is_storyAssignee.options.length; i++) {
+    if (Is_storyAssignee.options[i].selected === true) {
+      selectedAssignee = Is_storyAssignee.options[i].value;
+    }
+  }
+
+  if (Is_storyTitle.value === "" || Is_storyDescription.value === "") return;
+
+  let userStory = {
+    id: storyIdCounter,
+    title: Is_storyTitle.value,
+    sprint: selectedSprint,
+    assignee: selectedAssignee,
+    description: Is_storyDescription.value,
+  };
+
+  userStories.push(userStory);
+  console.log(userStories);
+  storyIdCounter++;
+
+  //   console.log(AjouterUserStory);
+  renderSprintBacklog();
 }
 
 /**
@@ -94,7 +132,7 @@ function addUserStory() {
  * - Injecter tout le HTML généré dans le conteneur
  */
 function renderSprintBacklog() {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -108,7 +146,7 @@ function renderSprintBacklog() {
  * - Appeler renderSprintBacklog() et renderBoard() pour mettre à jour l'affichage
  */
 function startSprint(sprintNum) {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -124,7 +162,7 @@ function startSprint(sprintNum) {
  *   - Injecter le HTML dans le conteneur
  */
 function renderBoard() {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -134,7 +172,7 @@ function renderBoard() {
  * - Retourner le status suivant selon le status actuel
  */
 function getNextStatus(current) {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -144,7 +182,7 @@ function getNextStatus(current) {
  * - Retourner le status précédent selon le status actuel
  */
 function getPrevStatus(current) {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -155,7 +193,7 @@ function getPrevStatus(current) {
  * - Appeler renderBoard() pour actualiser l'affichage
  */
 function moveCard(id, newStatus) {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 /**
@@ -165,7 +203,7 @@ function moveCard(id, newStatus) {
  * - Appeler renderBoard() pour actualiser l'affichage
  */
 function deleteCard(id) {
-    // À IMPLÉMENTER
+  // À IMPLÉMENTER
 }
 
 // Initialisation
