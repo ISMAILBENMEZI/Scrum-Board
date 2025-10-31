@@ -57,6 +57,15 @@ function updateCollaboratorsList() {
  */
 function updateAssigneeSelect() {
     // À IMPLÉMENTER
+    const mlSelect =document.getElementById("storyAssignee");
+    mlSelect.innerHTML="";
+    collaborators.forEach(select=>{
+     mlSelect.forEach
+     const option=document.createElement("option");
+     option.innerHTML=select;
+     option.value=select;
+     mlSelect.appendChild(option);
+    });
 }
 
 /**
