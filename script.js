@@ -3,9 +3,19 @@ let userStories = [];
 let boardStories = [];
 let storyIdCounter = 1;
 
+function usBlock(title, description, assign) {
+    return `
+          <div class="story-item">
+                <strong>`+ title + `</strong>
+                <p>`+ description + `</p>
+                <small>Assigné à: `+ assign + `</small>
+          </div>
+       `;
+}
+
 /**
  * Fonction pour ajouter un nouveau collaborateur à l'équipe
- * TODO:
+ * TODO: 
  * - Récupérer la valeur du champ input avec l'id 'collaboratorName'
  * - Vérifier que le nom n'est pas vide et n'existe pas déjà dans le tableau 'collaborators'
  * - Ajouter le collaborateur au tableau 'collaborators'
@@ -14,17 +24,15 @@ let storyIdCounter = 1;
  * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
  */
 function addCollaborator() {
-  let br_inputColab = document.getElementById("collaboratorName");
-  if (
-    !br_inputColab.value.trim() ||
-    collaborators.includes(br_inputColab.value.trim())
-  ) {
-    return;
-  }
-  collaborators.push(br_inputColab.value.trim());
-  console.log(collaborators);
-  updateCollaboratorsList();
-  updateAssigneeSelect();
+    let br_inputColab = document.getElementById("collaboratorName");
+    if (!br_inputColab.value.trim() || collaborators.includes(br_inputColab.value.trim())) {
+        return;
+    }
+    collaborators.push(br_inputColab.value.trim())
+    console.log(collaborators)
+    updateCollaboratorsList()
+    updateAssigneeSelect()
+    renderSprintBacklog()
 }
 
 /**
@@ -36,18 +44,18 @@ function addCollaborator() {
  * - Injecter le HTML dans l'élément avec innerHTML
  */
 function updateCollaboratorsList() {
-  const Is_List = document.getElementById("collaboratorsList");
-  Is_List.innerHTML = "";
-  for (let i of collaborators) {
-    let span = document.createElement("span");
-    span.textContent = i;
-    span.style.backgroundColor = "#667eea";
-    span.style.color = "#ffffffff";
-    span.style.padding = "8px 15px";
-    span.style.borderRadius = "20px";
-    span.style.margin = "0 5px";
-    Is_List.appendChild(span);
-  }
+    const Is_List = document.getElementById("collaboratorsList");
+    Is_List.innerHTML = "";
+    for (let i of collaborators) {
+        let span = document.createElement("span");
+        span.textContent = i;
+        span.style.backgroundColor = "#667eea"
+        span.style.color = "#ffffffff"
+        span.style.padding = "8px 15px"
+        span.style.borderRadius = "20px"
+        span.style.margin = "0 5px"
+        Is_List.appendChild(span);
+    }
 }
 
 /**
@@ -58,16 +66,16 @@ function updateCollaboratorsList() {
  * - Mettre à jour le select avec innerHTML
  */
 function updateAssigneeSelect() {
-  // À IMPLÉMENTER
-  const mlSelect = document.getElementById("storyAssignee");
-  mlSelect.innerHTML = "";
-  collaborators.forEach((select) => {
-    mlSelect.forEach;
-    const option = document.createElement("option");
-    option.innerHTML = select;
-    option.value = select;
-    mlSelect.appendChild(option);
-  });
+    // À IMPLÉMENTER
+    const mlSelect = document.getElementById("storyAssignee");
+    mlSelect.innerHTML = "";
+    collaborators.forEach(select => {
+        mlSelect.forEach
+        const option = document.createElement("option");
+        option.innerHTML = select;
+        option.value = select;
+        mlSelect.appendChild(option);
+    });
 }
 
 /**
@@ -136,7 +144,13 @@ function addUserStory() {
  * - Injecter tout le HTML généré dans le conteneur
  */
 function renderSprintBacklog() {
-  // À IMPLÉMENTER
+    userStories.forEach((us,index) => {
+        let rightlist = document.getElementById(us.sprint);
+        if(index==0){
+            rightlist.innerHTML="";
+        }
+        rightlist.innerHTML += usBlock(us.title,us.description,us.assignment);
+    })
 }
 
 /**
@@ -150,7 +164,8 @@ function renderSprintBacklog() {
  * - Appeler renderSprintBacklog() et renderBoard() pour mettre à jour l'affichage
  */
 function startSprint(sprintNum) {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
+
 }
 
 /**
@@ -166,7 +181,7 @@ function startSprint(sprintNum) {
  *   - Injecter le HTML dans le conteneur
  */
 function renderBoard() {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
 }
 
 /**
@@ -176,7 +191,7 @@ function renderBoard() {
  * - Retourner le status suivant selon le status actuel
  */
 function getNextStatus(current) {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
 }
 
 /**
@@ -186,7 +201,7 @@ function getNextStatus(current) {
  * - Retourner le status précédent selon le status actuel
  */
 function getPrevStatus(current) {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
 }
 
 /**
@@ -197,7 +212,7 @@ function getPrevStatus(current) {
  * - Appeler renderBoard() pour actualiser l'affichage
  */
 function moveCard(id, newStatus) {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
 }
 
 /**
@@ -207,9 +222,10 @@ function moveCard(id, newStatus) {
  * - Appeler renderBoard() pour actualiser l'affichage
  */
 function deleteCard(id) {
-  // À IMPLÉMENTER
+    // À IMPLÉMENTER
 }
 
+
 // Initialisation
-renderSprintBacklog();
-renderBoard();
+// renderSprintBacklog();
+// renderBoard();
