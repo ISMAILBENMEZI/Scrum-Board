@@ -102,7 +102,11 @@ function addUserStory() {
     }
   }
 
-  if (Is_storyTitle.value === "" || Is_storyDescription.value === "") return;
+  if (Is_storyTitle.value === "" || Is_storyDescription.value === "") 
+  {
+    return;
+  }
+    
 
   let userStory = {
     id: storyIdCounter,
