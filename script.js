@@ -112,13 +112,12 @@ function startSprint(sprintNum) {
     // À IMPLÉMENTER
     const startTodo =document.getElementById("todo");
     userStories[sprintNum].forEach(backlog=>{
+        boardStories.push(backlog);
         const backlogSpan =document.createElement("span");
         backlogSpan.innerHTML=backlog;
         startTodo.appendChild(backlogSpan);
     })
         
-   
-
     renderSprintBacklog() ;
     renderBoard();
 
