@@ -26,7 +26,19 @@ function addCollaborator() {
  * - Injecter le HTML dans l'élément avec innerHTML
  */
 function updateCollaboratorsList() {
-    // À IMPLÉMENTER
+    const Is_List = document.getElementById ("collaboratorsList");
+    Is_List.innerHTML = "";
+    for(let i of collaborators)
+    {
+        let span = document.createElement("span");
+        span.textContent = i;
+        span.style.backgroundColor = "#667eea"
+        span.style.color = "#ffffffff"
+        span.style.padding = "8px 15px"
+        span.style.borderRadius= "20px"
+        span.style.margin = "0 5px"
+        Is_List.appendChild(span);
+    }
 }
 
 /**
