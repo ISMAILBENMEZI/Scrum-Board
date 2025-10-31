@@ -14,7 +14,14 @@ let storyIdCounter = 1;
  * - Appeler updateAssigneeSelect() pour mettre à jour le select d'assignation
  */
 function addCollaborator() {
-    // À IMPLÉMENTER
+    let br_inputColab=document.getElementById("collaboratorName");
+    if(!br_inputColab.value.trim() || collaborators.includes(br_inputColab.value.trim())){
+        return;
+    }
+    collaborators.push(br_inputColab.value.trim())
+    console.log(collaborators)
+    updateCollaboratorsList()
+    updateAssigneeSelect()
 }
 
 /**
@@ -26,7 +33,19 @@ function addCollaborator() {
  * - Injecter le HTML dans l'élément avec innerHTML
  */
 function updateCollaboratorsList() {
-    // À IMPLÉMENTER
+    const Is_List = document.getElementById ("collaboratorsList");
+    Is_List.innerHTML = "";
+    for(let i of collaborators)
+    {
+        let span = document.createElement("span");
+        span.textContent = i;
+        span.style.backgroundColor = "#667eea"
+        span.style.color = "#ffffffff"
+        span.style.padding = "8px 15px"
+        span.style.borderRadius= "20px"
+        span.style.margin = "0 5px"
+        Is_List.appendChild(span);
+    }
 }
 
 /**
@@ -38,6 +57,15 @@ function updateCollaboratorsList() {
  */
 function updateAssigneeSelect() {
     // À IMPLÉMENTER
+    const mlSelect =document.getElementById("storyAssignee");
+    mlSelect.innerHTML="";
+    collaborators.forEach(select=>{
+     mlSelect.forEach
+     const option=document.createElement("option");
+     option.innerHTML=select;
+     option.value=select;
+     mlSelect.appendChild(option);
+    });
 }
 
 /**
@@ -52,6 +80,7 @@ function updateAssigneeSelect() {
  */
 function addUserStory() {
     // À IMPLÉMENTER
+
 }
 
 /**
@@ -81,6 +110,18 @@ function renderSprintBacklog() {
  */
 function startSprint(sprintNum) {
     // À IMPLÉMENTER
+    const startTodo =document.getElementById("todo");
+    userStories[sprintNum].forEach(backlog=>{
+        const backlogSpan =document.createElement("span");
+        backlogSpan.innerHTML=backlog;
+        startTodo.appendChild(backlogSpan);
+    })
+        
+   
+
+    renderSprintBacklog() ;
+    renderBoard();
+
 }
 
 /**
